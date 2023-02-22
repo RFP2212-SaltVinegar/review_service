@@ -7,7 +7,11 @@ const transform = (data, numbers, nVals) => {
   data.forEach((row, ind) => {
     Object.keys(row).forEach((key) => {
       if (nVals.has(key)) {
-        data[ind][key] = null;
+        if (data[ind][key] === 'null') {
+          data[ind][key] = null;
+        } else {
+          data[ind][key] = data[ind][key].trim();
+        }
       } else if (numbers.has(key)) {
         data[ind][key] = parseInt(data[ind][key]);
       } else {
