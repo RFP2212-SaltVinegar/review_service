@@ -8,6 +8,12 @@ const client = new Client({
   database: process.env.DATABASE,
 });
 
-client.connect();
+client.connect((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('connection complete');
+  }
+});
 
 module.exports = client;
